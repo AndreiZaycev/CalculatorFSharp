@@ -30,11 +30,6 @@
         <Compile Include="Main.fs" />
     </ItemGroup>
     <ItemGroup>
-      <PackageReference Include="Nunit" Version="3.11.0" />
-      <PackageReference Include="NUnit3TestAdapter" Version="3.12.0" />
-      <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
-      <PackageReference Include="coverlet.msbuild" Version="2.4.0" />
-      <PackageReference Include="dotnet-reportgenerator-cli" Version="4.0.5-rc2" />
       <PackageReference Include="Argu" Version="6.0.0" />
       <PackageReference Include="FsLexYacc" Version="10.2.0" />
       <PackageReference Include="System.Threading.Tasks.Dataflow" Version="5.0.0" />
