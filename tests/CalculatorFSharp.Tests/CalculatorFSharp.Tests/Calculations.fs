@@ -1,7 +1,8 @@
 module Calculations
 
-open Main
-open Interpretator
+open CalculatorFSharp
+open CalculatorFSharp.Main
+open CalculatorFSharp.Interpreter
 open Expecto
 
 let pr1 =
@@ -13,7 +14,8 @@ let pr1 =
     print y
     print z
     """
-Interpretator.run (parse pr1)
+let _, pD = Interpreter.run (parse pr1)
+printfn "%s" pD.["print"]
 printfn "Expected \n228\n1337\n25"
 
 [<Tests>]
