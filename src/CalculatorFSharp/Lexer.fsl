@@ -1,0 +1,40 @@
+﻿{
+open FSharp.Text.Lexing
+
+let newline (lexbuf: LexBuffer<_>) =
+  lexbuf.StartPos <- lexbuf.StartPos.NextLine
+let lexeme x = LexBuffer<_>.LexemeString x
+}
+
+let whitespace = [ ' ' '\t' ]
+
+let newline = ( '\n' | '\r' '\n' )
+
+let number =  '-'? ['1'-'9'] ['0'-'9']* | ' ' '0' | '0' ' '
+
+let vname = [ 'a'-'z' 'A'-'z' ]+ 
+
+rule tokenStream = parse
+// --------------------------
+| whitespace  { tokenStream lexbuf }
+| newline  { tokenStream lexbuf }
+//---------------------------
+| '(' { CalcParser.LBR }
+| ')' { CalcParser.RBR }
+| '}' { CalcParser.RBRMOD }
+| '{' { CalcParser.LBRMOD }
+| '+' { CalcParser.Sum }
+| '-' { CalcParser.Sub }
+| '%' { CalcParser.DivRem }
+| '*' { CalcParser.Mul }
+| '/' { CalcParser.Div }
+| '^' { CalcParser.Pow }                 
+| '#' { CalcParser.Bin }
+| '=' { CalcParser.EQ }
+| "print" { CalcParser.KW_PRINT }
+| vname { CalcParser.VNAME(lexeme lexbuf) }
+//---------------------------
+| number { CalcParser.NUM (BigAriphmetics.BigInt.convertString (LexBuffer<_>.LexemeString lexbuf)) }
+//---------------------------
+| _        { failwith ("Lexer error. Unexpected symbol: " + LexBuffer<_>.LexemeString lexbuf) }
+| eof     { CalcParser.EOF }
