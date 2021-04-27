@@ -1,0 +1,61 @@
+﻿%start start
+
+// Regular tokens
+%token <BigAriphmetics.BigInt> NUM
+%token Sum
+%token Sub
+%token Div
+%token Mul
+%token Pow
+%token DivRem
+%token Bin
+%token LBRMOD
+%token RBRMOD
+%token LBR
+%token RBR
+%token <string> VNAME
+%token KW_PRINT
+%token EQ 
+
+// Misc tokens
+%token EOF
+
+// This is the type of the data produced by a successful reduction of the 'start'
+// symbol:
+%type < Exp.Program > start
+
+%%
+
+start: stmt {[$1]}
+    | stmt start {$1 :: $2}
+
+stmt: 
+    | vname EQ expression {Exp.VDecl($1,$3)}
+    | KW_PRINT vname {Exp.Print($2)}
+
+expression: 
+    | tExpression {$1}
+    | expression Sum tExpression {Exp.Sum ($1, $3)}
+    | expression Sub tExpression {Exp.Sub ($1, $3)}
+
+tExpression: 
+    | factor {$1}
+    | tExpression DivRem factor {Exp.DivRem ($1, $3)}
+    | tExpression Mul factor {Exp.Mul ($1, $3)}
+    | tExpression Div factor {Exp.Div ($1, $3)}
+
+factor:   
+    | power {$1}   
+    | factor Pow power {Exp.Pow ($1, $3)}
+
+power: 
+    | LBR expression RBR {$2}  
+    | LBRMOD expression RBRMOD {Exp.Abs $2}
+    | NUM {Exp.Num $1}
+    | vname {Exp.NVar($1)}
+    | Bin expression {Exp.Bin $2}
+
+
+vname: VNAME {Exp.Var($1)}
+
+eof: EOF {1}
