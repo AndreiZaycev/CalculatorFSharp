@@ -14,7 +14,7 @@ let pr1 =
     print y
     print z
     """
-let _, pD = Interpreter.run (parse pr1)
+let _, _, pD = Interpreter.run (parse pr1)
 printfn "%s" pD.["print"]
 printfn "Expected \n228\n1337\n25"
 

@@ -53,6 +53,12 @@ module Interpreter =
     let run ast =
         let vDict = Dictionary<_,_>()
         let pDict = Dictionary<_,_>()
+        let varDict = Dictionary<_,_>()
         pDict.Add("print", "")
-        List.fold (fun (d1, d2) stmt -> processStmt d1 stmt d2) (vDict, pDict) ast
+        let vD, pD = List.fold (fun (d1, d2) stmt -> processStmt d1 stmt d2) (vDict, pDict) ast
+        for i in vD.Keys do
+            match vD.[i] with
+            | Exp.Num n -> varDict.[string i] <- n.toString
+            | _ -> failwith "impossible case"
+        vD, varDict, pDict
      
