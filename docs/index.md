@@ -1,43 +1,18 @@
 # CalculatorFSharp
 
-This calculator was created to evaluate expressions using the F # language.
+CalculatorFSharp is a library which mainly designed to compute arithmetic expressions.
+CalculatorFSharp contains an interpreter for the simple programming language, long arithmetic and non-empty list libraries.
 
-## Usage
+## Installing
 
-All expressions in the calculator must be variables or prints.
-You can see language features below:
-	
-	var = expr # Variable declaration, var is name of variable which consists of 'a' - 'z', 'A' - 'Z' symbols, expr is number or expression
-	print var # To print something you need use key "print" and specify variable you want to output
-	
+You can install the package with dotnet by following this steps:
 
-## Operations
-
-* `+` - Sums two expressions
-* `-` - Subtracts the second expression from the first expression
-* `-variable | -digit` - Unary minus helps the calculator understand the sign of the variable or digit
-* `*` - Multiplies two expressions
-* `/` - Divides the first expression into the second expression
-* `^` - Result of raising to the power of the first expression to the second expression 
-* `{ expr }` - Brackets to absolute expression
-* `%` - Remainder of dividing the first expression by the second expression
-* `#` - Converts expression to binary system
-* `=` - Binds a variable name to a value or expression
-* `( expr )` - Brackets to set the order of operations
-
-## Templates
-
-
-	x = 5 
-	x = x + 10 # x = 15
-
-	
-	x = 5
-	y = 6
-	z = 5 
-	x = (x + y) / z 
-	print x # output : 2 
-
-	
-	x = 12 + 6 / 3 - 7
-	print x # output : 7
+* Add a source in your NuGet.config file
+#
+	dotnet nuget add source "https://nuget.pkg.github.com/AndreiZaycev/index.json"
+* Authorize with your github token
+#
+	paket config add-token "https://nuget.pkg.github.com/AndreiZaycev/index.json" <token>
+* Install the package
+#
+	dotnet add PROJECT package CalculatorFSharp --version <version>
