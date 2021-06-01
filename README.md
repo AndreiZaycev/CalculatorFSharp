@@ -20,7 +20,7 @@ the Calculator was created with [FsLexYacc](https://github.com/fsprojects/FsLexY
 - [Building](#building)
 - [Using CalculatorFSharp in your project](#using-calculatorfsharp-in-your-project)
 - [Usage and examples](#usage-and-examples)
-- [API documentation](#api-documentation)
+- [detailed documentation](#detailed documentation)
 - [Publication](#publication)
 - [Requirements](#requirements)
 
@@ -77,7 +77,7 @@ Examples:
 	print x # output : 7
 
 
-## API documentation
+## Detailed documentation
 
 For complete documentation of CalculatorFSharp, visit [documentation](https://AndreiZaycev.github.io/CalculatorFSharp/).
 
