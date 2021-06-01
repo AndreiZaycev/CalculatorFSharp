@@ -20,7 +20,7 @@ the Calculator was created with [FsLexYacc](https://github.com/fsprojects/FsLexY
 - [Building](#building)
 - [Using CalculatorFSharp in your project](#using-calculatorfsharp-in-your-project)
 - [Usage and examples](#usage-and-examples)
-- [detailed documentation](#detailed-documentation)
+- [Detailed documentation](#detailed-documentation)
 - [Publication](#publication)
 - [Requirements](#requirements)
 
