@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <OutputType>Exe</OutputType>
+    </PropertyGroup>
+    <PropertyGroup>
+        <Title>Calculator</Title>
+        <Description>Calculator does the thing!</Description>
+        <PackageLicenseExpression></PackageLicenseExpression>
+        <PackageTags>Calculator F#, Calc F#, Interpreter F#, Calculator, Compute F#</PackageTags>
+        <PackageId>CalcFSharp</PackageId>
+        <Version>1.0.2</Version>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)'=='Release'">
+        <Optimize>true</Optimize>
+        <Tailcalls>true</Tailcalls>
+    </PropertyGroup>
+    <ItemGroup>
+        <None Include="App.config" />
+        <None Include="CalcParser.fsy" />
+        <None Include="Lexer.fsl" />
+        <Compile Include="Listik.fs" />
+        <Compile Include="BigAriphmetics.fs" />
+        <Compile Include="Exp.fs" />
+        <Compile Include="CalcParser.fs" />
+        <Compile Include="Lexer.fs" />
+        <Compile Include="Interpreter.fs" />
+        <Compile Include="ToDot.fs" />
+        <Compile Include="AssemblyInfo.fs" />
+        <Compile Include="Main.fs" />
+    </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="Argu" Version="6.0.0" />
+      <PackageReference Include="FsLexYacc" Version="10.2.0" />
+      <PackageReference Include="System.Threading.Tasks.Dataflow" Version="5.0.0" />
+    </ItemGroup>
+</Project>
